@@ -1,3 +1,39 @@
+const inquirer = require('inquirer');
+// const Manager = require('../lib/Manager');
+// const Engineer = require('../lib/Engineer');
+// const Intern = require('../lib/Intern');
+
+const initializeTeam = () => {
+    console.log(`
+  <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+    Create a Team Profile by answering the prompts!
+           - We'll start with your manager -
+  <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+    `);
+    return inquirer.prompt([
+        {
+            // get the team name
+            type: 'input',
+            name: 'teamName',
+            message: "What is the name of your team?",
+            validate: teamName => {
+                if (!teamName) {
+                console.log('Ack! Please enter your team name-');
+                return false;
+                } else {
+                return true;
+                }
+            }
+        }
+    ])
+}
+
+
+// call order
+initializeTeam()
+.then(initializeTeam => {
+    console.log(initializeTeam)
+})
 /*
 Psuedocoding
 GIVEN a command-line application that accepts user input
@@ -17,39 +53,4 @@ WHEN I select the intern option
 THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
-
-            Employee Class
-Variables
-    name
-    id
-    email
-
-Methods
-    getName()
-    getId()
-    getEmail()
-    getRole() // Returns 'Employee'
-
-            Manager Class
-Variables
-    officeNumber
-
-Methods
-    getRole() // Overridden to return Manager
-
-            Engineer Class
-Variables
-    github // GitHub username
-
-Methods
-    getGithub()
-    getRole() // Overridden to return Engineer
-
-            Intern Class
-Variables
-    school
-
-Methods
-    getSchool()
-    getRole() // Overridden to return Intern
 */
