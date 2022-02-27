@@ -1,39 +1,70 @@
 const inquirer = require('inquirer');
-// const Manager = require('../lib/Manager');
+const Manager = require('./lib/Manager');
 // const Engineer = require('../lib/Engineer');
 // const Intern = require('../lib/Intern');
 
-const initializeTeam = () => {
+function Team() {
+    this.teamComplete = false;
+    this.employee;
+};
+
+Team.prototype.initializeTeam = function() {
     console.log(`
   <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
     Create a Team Profile by answering the prompts!
-           - We'll start with your manager -
+          - We'll start with your Team Name -
   <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
     `);
-    return inquirer.prompt([
-        {
-            // get the team name
-            type: 'input',
-            name: 'teamName',
-            message: "What is the name of your team?",
-            validate: teamName => {
-                if (!teamName) {
-                console.log('Ack! Please enter your team name-');
-                return false;
-                } else {
-                return true;
-                }
-            }
-        }
-    ])
-}
+    inquirer
+      .prompt(
+      {
+       // get the team name
+       type: 'input',
+       name: 'teamName',
+       message: "What is the name of your team?",  
+      })
+    .then(({ teamName }) => {
+      console.log(teamName)
+
+      this.addManager();
+    });
+};
+
+Team.prototype.addManager = function() {
+    console.log("nice")
+    inquirer
+      .prompt(
+      {
+       // get the Manager name
+       type: 'input',
+       name: 'name',
+       message: "What is your Manager's name?",
+      },
+      {
+        // get the Manager name
+        type: 'input',
+        name: 'id',
+        message: "What is your Manager's i.d.?", 
+      }
+    //   {
+    //     // get the Manager name
+    //     type: 'input',
+    //     name: 'email',
+    //     message: "What your manager's email?", 
+    //   }
+      )
+    //   .then(({ name, id, email }) => {
+    //     this.employee = new Manager(name, id, email);
+    //   });
+    
+  };
 
 
-// call order
-initializeTeam()
-.then(initializeTeam => {
-    console.log(initializeTeam)
-})
+new Team().initializeTeam();
+module.exports = Team;
+
+
+
 /*
 Psuedocoding
 GIVEN a command-line application that accepts user input
