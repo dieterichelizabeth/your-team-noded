@@ -12,6 +12,7 @@ test('create a manager', () => {
 // test to add an office #
 test('add office #', () => {
     const manager = new Manager('Dave');
+    manager.addOffice('4001');
   
     expect(manager.office).toBe('4001');
   });
