@@ -11,7 +11,7 @@ test('create a manager', () => {
 
 // test to add an office #
 test('add office #', () => {
-    const manager = new Manager('Dave');
+    const manager = new Manager('Barry');
     manager.addOffice('4001');
   
     expect(manager.office).toBe('4001');
@@ -19,7 +19,7 @@ test('add office #', () => {
 
 // test to change role from employee to manager
 test('change employee role', () => {
-    const manager = new Manager('Dave');
+    const manager = new Manager('Barry');
     manager.getRole('Manager');
   
     expect(manager.role).toBe('Manager');
