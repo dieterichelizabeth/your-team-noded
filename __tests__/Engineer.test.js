@@ -2,8 +2,12 @@ const Engineer = require('../lib/Engineer');
 
 // test to create a Engineer with name, id, and email
 test('create a engineer', () => {
-    const engineer = new Engineer('Barry', '476', 'Barry@gmail.com');
+    const engineer = new Engineer('Barry');
   
+    engineer.getName('Barry');
+    engineer.getId('476');
+    engineer.getEmail('Barry@gmail.com');
+
     expect(engineer.name).toBe('Barry');
     expect(engineer.id).toBe('476');
     expect(engineer.email).toBe('Barry@gmail.com');
