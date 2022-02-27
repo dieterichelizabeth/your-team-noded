@@ -16,3 +16,11 @@ test('add office #', () => {
   
     expect(manager.office).toBe('4001');
   });
+
+// test to change role from employee to manager
+test('change employee role', () => {
+    const manager = new Manager('Dave');
+    manager.getRole('Manager');
+  
+    expect(manager.role).toBe('Manager');
+  });
