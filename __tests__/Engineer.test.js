@@ -11,15 +11,15 @@ test('create a engineer', () => {
 
 // test to add Engineer github
 test('get Github', () => {
-    const engineer = new Engineer('Dave');
-    engineer.getGithub('octoDave');
+    const engineer = new Engineer('Barry');
+    engineer.getGithub('octoBarry');
   
-    expect(engineer.github).toBe('octoDave');
+    expect(engineer.github).toBe('octoBarry');
   });
 
 // test to change role from employee to engineer
 test('change employee role', () => {
-    const engineer = new Engineer('Dave');
+    const engineer = new Engineer('Barry');
     engineer.getRole('Engineer');
   
     expect(engineer.role).toBe('Engineer');
