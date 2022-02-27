@@ -14,7 +14,7 @@ test('get Github', () => {
     const engineer = new Engineer('Dave');
     engineer.getGithub('octoDave');
   
-    expect(engineer.gihub).toBe('octoDave');
+    expect(engineer.github).toBe('octoDave');
   });
 
 // test to change role from employee to engineer
