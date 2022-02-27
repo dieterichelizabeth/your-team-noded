@@ -8,3 +8,10 @@ test('create a manager', () => {
     expect(manager.id).toBe('476');
     expect(manager.email).toBe('Barry@gmail.com');
   });
+
+// test to add an office #
+test('add office #', () => {
+    const manager = new Manager('Dave');
+  
+    expect(manager.office).toBe('4001');
+  });
