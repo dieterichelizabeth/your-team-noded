@@ -56,12 +56,12 @@ Team.prototype.addManager = function() {
       {
         // get the Manager email
         type: 'input',
-        name: 'office',
+        name: 'newOffice',
         message: "What is your Manager's office number?", 
       }
     ])
-      .then(({ name, id, email, office }) => {
-        this.employee = new Manager(name, id, email, office);
+      .then(({ name, id, email, newOffice }) => {
+        this.employee = new Manager(name, id, email, newOffice);
 
         this.teamReview();
       }

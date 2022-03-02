@@ -1,0 +1,52 @@
+body {
+  background-color: #2d2d30;
+}
+
+/* Banner Images */
+#banner {
+  background-image: url(./images/banner.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+}
+
+#bannerIcon {
+  margin-top: 160px;
+  margin-left: 40%;
+  height: 200px;
+}
+
+/* Header */
+header {
+  margin-top: 150px;
+  margin-bottom: 60px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+header p {
+  color: #bdbdbd;
+  text-align: center;
+}
+
+/* Begin styles to body */
+p {
+  color: #bdbdbd;
+}
+
+#card {
+  background-color: #1d1d1f;
+  border-radius: 5px;
+}
+
+img {
+  height: 100px;
+}
+
+#employeeName {
+  font-size: 30px;
+}
