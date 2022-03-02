@@ -31,9 +31,8 @@ Team.prototype.initializeTeam = function() {
 };
 
 Team.prototype.addManager = function() {
-    console.log("nice")
     inquirer
-      .prompt(
+      .prompt([
       {
        // get the Manager name
        type: 'input',
@@ -45,20 +44,45 @@ Team.prototype.addManager = function() {
         type: 'input',
         name: 'id',
         message: "What is your Manager's i.d.?", 
+      },
+      {
+        // get the Manager email
+        type: 'input',
+        name: 'email',
+        message: "What is your Manager's email?", 
+      },
+      {
+        // get the Manager email
+        type: 'input',
+        name: 'office',
+        message: "What is your Manager's office number?", 
       }
-    //   {
-    //     // get the Manager name
-    //     type: 'input',
-    //     name: 'email',
-    //     message: "What your manager's email?", 
-    //   }
-      )
-    //   .then(({ name, id, email }) => {
-    //     this.employee = new Manager(name, id, email);
-    //   });
-    
-  };
+    ])
+      .then(({ name, id, email, office }) => {
+        this.employee = new Manager(name, id, email, office);
 
+        this.teamReview();
+      }
+    );
+};
+
+
+Team.prototype.teamReview = function() {
+  inquirer
+  .prompt([
+  {
+   // get the Manager name
+   type: 'list',
+   name: 'isComplete',
+   message: "Would you like to add another team member?",
+   choices: ['Intern', 'Engineer', 'My team is complete.']
+  }
+])
+  .then (({answer}) => {
+    console.log(answer);
+    console.log("done.")
+  })
+};
 
 new Team().initializeTeam();
 module.exports = Team;
