@@ -1,4 +1,6 @@
 const inquirer = require('inquirer');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 // const Engineer = require('../lib/Engineer');
 // const Intern = require('../lib/Intern');
@@ -78,11 +80,96 @@ Team.prototype.teamReview = function() {
    choices: ['Intern', 'Engineer', 'My team is complete.']
   }
 ])
-  .then (({answer}) => {
-    console.log(answer);
-    console.log("done.")
+  .then (({isComplete}) => {
+    console.log(isComplete);
+    if (isComplete === 'Intern'){
+      this.addIntern();
+    }
+    else if (isComplete === 'Engineer'){
+      this.addEngineer();
+    }
+    else {
+      this.teamDone();
+    }
   })
 };
+
+Team.prototype.addIntern = function() {
+  inquirer
+      .prompt([
+      {
+       // get the Intern name
+       type: 'input',
+       name: 'name',
+       message: "What is your Intern's name?",
+      },
+      {
+        // get the Intern name
+        type: 'input',
+        name: 'id',
+        message: "What is your Intern's i.d.?", 
+      },
+      {
+        // get the Intern email
+        type: 'input',
+        name: 'email',
+        message: "What is your Intern's email?", 
+      },
+      {
+        // get the Intern email
+        type: 'input',
+        name: 'currentSchool',
+        message: "What is your Intern's current school?", 
+      }
+    ])
+    .then(({ name, id, email, currentSchool }) => {
+      this.employee = new Intern(name, id, email, currentSchool);
+
+      this.teamReview();
+    }
+    );
+}
+
+Team.prototype.addEngineer = function() {
+  inquirer
+      .prompt([
+      {
+       // get the Engineer name
+       type: 'input',
+       name: 'name',
+       message: "What is your Engineer's name?",
+      },
+      {
+        // get the Engineer name
+        type: 'input',
+        name: 'id',
+        message: "What is your Engineer's i.d.?", 
+      },
+      {
+        // get the Engineer email
+        type: 'input',
+        name: 'email',
+        message: "What is your Engineer's email?", 
+      },
+      {
+        // get the Engineer email
+        type: 'input',
+        name: 'githubUsername',
+        message: "What is your Engineer's GitHub username?", 
+      }
+    ])
+    .then(({ name, id, email, githubUsername }) => {
+      this.employee = new Engineer(name, id, email, githubUsername);
+
+      this.teamReview();
+    }
+    );
+}
+
+Team.prototype.teamDone = function() {
+  console.log("completed team!");
+  // pass the information to a generate html function
+}
 
 new Team().initializeTeam();
 module.exports = Team;
