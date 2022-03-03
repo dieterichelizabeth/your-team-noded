@@ -9,11 +9,13 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #bannerIcon {
-  margin-top: 160px;
-  margin-left: 40%;
+  margin-top: 180px;
   height: 200px;
 }
 
@@ -49,4 +51,42 @@ img {
 
 #employeeName {
   font-size: 30px;
+}
+
+.teamCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.teamCardSpacing {
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.cardContent {
+  width: 100%;
+  text-align: center;
+}
+
+.cardIcon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+/* MEDIA QUERY FOR 980px */
+@media screen and (max-width: 980px) {
+  .teamCardSpacing {
+    width: 40%;
+  }
+}
+
+/* MEDIA QUERY FOR 575px */
+@media screen and (max-width: 575px) {
+  .teamCardSpacing {
+    width: 80%;
+  }
 }
