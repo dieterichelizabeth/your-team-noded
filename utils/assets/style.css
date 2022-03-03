@@ -53,6 +53,10 @@ img {
   font-size: 30px;
 }
 
+a {
+  color: #5bb398;
+}
+
 .teamCards {
   display: flex;
   flex-direction: row;
