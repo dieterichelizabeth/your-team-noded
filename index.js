@@ -163,15 +163,16 @@ Team.prototype.addEngineer = function() {
         message: "What is your Engineer's email?", 
       },
       {
-        // get the Engineer email
+        // get the Engineer Github Username
         type: 'input',
         name: 'githubUsername',
         message: "What is your Engineer's GitHub username?", 
       }
     ])
     .then(({ name, id, email, githubUsername }) => {
-      this.employee = new Engineer(name, id, email, githubUsername);
+      this.employee = new Engineer( name, id, email, githubUsername );
       this.team.push(this.employee);
+      console.table(this.employee.employeeDisplay());
 
       this.teamReview();
     }
