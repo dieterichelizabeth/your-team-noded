@@ -64,7 +64,6 @@ Team.prototype.addManager = function() {
       }
     ])
       .then(({ name, id, email, newOffice }) => {
-        console.log(this.employee);
         this.employee = new Manager( name, id, email, newOffice );
         this.team.push(this.employee);
         console.table(this.employee.employeeDisplay());
@@ -132,8 +131,9 @@ Team.prototype.addIntern = function() {
       }
     ])
     .then(({ name, id, email, currentSchool }) => {
-      this.employee = new Intern(name, id, email, currentSchool);
+      this.employee = new Intern( name, id, email, currentSchool );
       this.team.push(this.employee);
+      console.table(this.employee.employeeDisplay());
 
       this.teamReview();
     }
