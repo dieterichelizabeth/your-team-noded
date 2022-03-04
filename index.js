@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const fs = require ('fs');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
@@ -28,7 +29,7 @@ Team.prototype.initializeTeam = function() {
        message: "What is the name of your team?",  
       })
     .then(({ teamName }) => {
-      console.log(teamName)
+      this.team.push(teamName);
 
       this.addManager();
     });
@@ -70,8 +71,11 @@ console.log(`
       }
     ])
       .then(({ name, id, email, newOffice }) => {
+        // create a new Manager class
         this.employee = new Manager( name, id, email, newOffice );
+        // push into the team array
         this.team.push(this.employee);
+        // display for the user
         console.table(this.employee.employeeDisplay());
         this.teamReview();
       }
@@ -143,8 +147,11 @@ console.log(`
       }
     ])
     .then(({ name, id, email, currentSchool }) => {
+      // create a new Intern class
       this.employee = new Intern( name, id, email, currentSchool );
+      // push it into the team array
       this.team.push(this.employee);
+      // display for the user
       console.table(this.employee.employeeDisplay());
 
       this.teamReview();
@@ -187,8 +194,11 @@ console.log(`
       }
     ])
     .then(({ name, id, email, githubUsername }) => {
+      // create a new Engineer class
       this.employee = new Engineer( name, id, email, githubUsername );
+      // push the Engineer into the team array
       this.team.push(this.employee);
+      // display for the user
       console.table(this.employee.employeeDisplay());
 
       this.teamReview();
@@ -205,6 +215,15 @@ console.log(`
 `);
   // pass the information to a generate html function
   console.log(this.team);
+  const teamPage = generateHTML(this.team);
+  fs.writeFile('./dist/index.html', teamPage, err => {
+    if (err) throw new Error(err);
+    console.log(`
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+ Team Profile complete!...check the 'dist' folder
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+`);
+  });
 }
 
 new Team().initializeTeam();
