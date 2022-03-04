@@ -14,10 +14,10 @@ function Team() {
 // Start/welcome- enter the team name and move to add Manager
 Team.prototype.initializeTeam = function() {
     console.log(`
-  <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
-    Create a Team Profile by answering the prompts!
-          - We'll start with your Team Name -
-  <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+  Create a Team Profile by answering the prompts!
+        - We'll start with your Team Name -
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
     `);
     inquirer
       .prompt(
@@ -36,6 +36,12 @@ Team.prototype.initializeTeam = function() {
 
 // Add your manager
 Team.prototype.addManager = function() {
+console.log(`
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+        -  Next, we'll add your manager -
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+`);
+
     inquirer
       .prompt([
       {
@@ -74,6 +80,7 @@ Team.prototype.addManager = function() {
 
 // Asks the user if they want to add another Employee
 Team.prototype.teamReview = function() {
+
   inquirer
   .prompt([
   {
@@ -103,6 +110,11 @@ Team.prototype.teamReview = function() {
 
 // Add an Intern
 Team.prototype.addIntern = function() {
+console.log(`
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+              ...adding Intern...
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+`);
   inquirer
       .prompt([
       {
@@ -142,6 +154,11 @@ Team.prototype.addIntern = function() {
 
 // add an Engineer
 Team.prototype.addEngineer = function() {
+console.log(`
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+              ...adding Engineer...
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+`);
   inquirer
       .prompt([
       {
@@ -181,7 +198,11 @@ Team.prototype.addEngineer = function() {
 
 // Team complete function
 Team.prototype.teamDone = function() {
-  console.log("completed team!");
+console.log(`
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+            ...your team loading...
+<><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
+`);
   // pass the information to a generate html function
   console.log(this.team);
 }
