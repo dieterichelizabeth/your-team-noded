@@ -10,29 +10,86 @@ const generateEmployee = teamData => {
   // create a function to change profile pictures for each employee
   // 
 
-for(let i=0; i < teamData.length; i++) {
-  
-  return `
-  <!-- Employee -->
-  <div id="card" class="teamCardSpacing">
-    <div>
-      <p class="cardContent">${teamData[i].name}</p>
-    </div>
-    <img class="cardIcon" src="./assets/images/profile4.png" alt="" />
-    <div>
-      <p class="cardContent">
-        <i class="fa-brands fa-connectdevelop"></i> ${teamData[i].role}
-      </p>
-      <p class="cardContent">ID: ${teamData[i].id}</p>
-      <p class="cardContent">
-        Email: <a href="mailto:${teamData[i].email}"> ${teamData[i].email}</a>
-      </p>
-      <p class="cardContent">Office Number: ${teamData[i].office}</p>
-    </div>
-  </div>
-  `
+  for(let i=0; i < teamData.length; i++) {
+    if (employee[i].role = 'Manager'){
+      // random number for profile photo
+      var profile = Math.floor(Math.random() * 6) + 1;
+
+      return `
+      <!-- Manager -->
+      <div id="card" class="teamCardSpacing">
+        <div>
+          <p class="cardContent">${teamData[i].name}</p>
+        </div>
+        <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
+        <div>
+          <p class="cardContent">
+            <i class="fa-solid fa-mug-hot"></i> ${teamData[i].role}
+          </p>
+          <p class="cardContent">ID: ${teamData[i].id}</p>
+          <p class="cardContent">
+            Email: <a href="mailto:${teamData[i].email}"> ${teamData[i].email}</a>
+          </p>
+          <p class="cardContent">Office Number: ${teamData[i].office}</p>
+        </div>
+      </div>
+      `
+    } else if (employee[i].role = 'Intern'){
+      // random number for profile photo
+      var profile = Math.floor(Math.random() * 6) + 1;
+
+      return `
+      <!-- Intern -->
+      <div id="card" class="teamCardSpacing">
+        <div>
+          <p class="cardContent">${teamData[i].name}</p>
+        </div>
+        <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
+        <div>
+          <p class="cardContent">
+          <i class="fa-solid fa-graduation-cap"></i> ${teamData[i].role}
+          </p>
+          <p class="cardContent">ID: ${teamData[i].id}</p>
+          <p class="cardContent">
+            Email: <a href="mailto:${teamData[i].email}"> ${teamData[i].email}</a>
+          </p>
+          <p class="cardContent">School: ${teamData[i].school}</p>
+        </div>
+      </div>
+      `
+      } else {
+      // random number for profile photo
+      var profile = Math.floor(Math.random() * 6) + 1;
+
+      return `
+      <!-- Engineer -->
+      <div id="card" class="teamCardSpacing">
+        <div>
+          <p class="cardContent">${teamData[i].name}</p>
+        </div>
+        <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
+        <div>
+          <p class="cardContent">
+          <i class="fa-solid fa-graduation-cap"></i> ${teamData[i].role}
+          </p>
+          <p class="cardContent">ID: ${teamData[i].id}</p>
+          <p class="cardContent">
+            Email: <a href="mailto:${teamData[i].email}"> ${teamData[i].email}</a>
+          </p>
+          <p id="employeeInfo" class="cardContent">
+          Github:
+          <a
+            href="https://github.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >https://github.com/</a
+          >
+        </p>
+        </div>
+      </div>
+      `
+        }
   }
-  
 };
 
 function generateHTML(teamData) {
