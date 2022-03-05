@@ -27,6 +27,14 @@ Team.prototype.initializeTeam = function() {
        type: 'input',
        name: 'teamName',
        message: "What is the name of your team?",  
+       validate: teamName => {
+        if (!teamName) {
+          console.log('Please enter the name of your team');
+          return false;
+        } else {
+          return true;
+        }
+      }
       })
     .then(({ teamName }) => {
       this.team.push(teamName);
@@ -50,24 +58,52 @@ console.log(`
        type: 'input',
        name: 'name',
        message: "What is your Manager's name?",
+       validate: name => {
+        if (!name) {
+          console.log('Please enter a valid name');
+          return false;
+        } else {
+          return true;
+        }}
       },
       {
         // get the Manager name
         type: 'input',
         name: 'id',
         message: "What is your Manager's i.d.?", 
+        validate: id => {
+          if (!id) {
+            console.log('Please enter a valid id');
+            return false;
+          } else {
+            return true;
+          }}
       },
       {
         // get the Manager email
         type: 'input',
         name: 'email',
         message: "What is your Manager's email?", 
+        validate: email => {
+          if (!email) {
+            console.log('Please enter a valid email');
+            return false;
+          } else {
+            return true;
+          }}
       },
       {
-        // get the Manager email
+        // get the Manager office #
         type: 'input',
         name: 'newOffice',
         message: "What is your Manager's office number?", 
+        validate: newOffice => {
+          if (!newOffice) {
+            console.log('Please enter a valid office number');
+            return false;
+          } else {
+            return true;
+          }}
       }
     ])
       .then(({ name, id, email, newOffice }) => {
@@ -126,24 +162,52 @@ console.log(`
        type: 'input',
        name: 'name',
        message: "What is your Intern's name?",
+       validate: name => {
+        if (!name) {
+          console.log('Please enter a valid name');
+          return false;
+        } else {
+          return true;
+        }}
       },
       {
-        // get the Intern name
+        // get the Intern id
         type: 'input',
         name: 'id',
         message: "What is your Intern's i.d.?", 
+        validate: id => {
+          if (!id) {
+            console.log('Please enter a valid id');
+            return false;
+          } else {
+            return true;
+          }}
       },
       {
         // get the Intern email
         type: 'input',
         name: 'email',
         message: "What is your Intern's email?", 
+        validate: email => {
+          if (!email) {
+            console.log('Please enter a valid email');
+            return false;
+          } else {
+            return true;
+          }}
       },
       {
-        // get the Intern email
+        // get the Intern school
         type: 'input',
         name: 'currentSchool',
         message: "What is your Intern's current school?", 
+        validate: currentSchool => {
+          if (!currentSchool) {
+            console.log('Please enter a valid school');
+            return false;
+          } else {
+            return true;
+          }}
       }
     ])
     .then(({ name, id, email, currentSchool }) => {
@@ -173,24 +237,52 @@ console.log(`
        type: 'input',
        name: 'name',
        message: "What is your Engineer's name?",
+       validate: name => {
+        if (!name) {
+          console.log('Please enter a valid name');
+          return false;
+        } else {
+          return true;
+        }}
       },
       {
-        // get the Engineer name
+        // get the Engineer id
         type: 'input',
         name: 'id',
         message: "What is your Engineer's i.d.?", 
+        validate: id => {
+          if (!id) {
+            console.log('Please enter a valid id');
+            return false;
+          } else {
+            return true;
+          }}
       },
       {
         // get the Engineer email
         type: 'input',
         name: 'email',
         message: "What is your Engineer's email?", 
+        validate: email => {
+          if (!email) {
+            console.log('Please enter a valid email');
+            return false;
+          } else {
+            return true;
+          }}
       },
       {
         // get the Engineer Github Username
         type: 'input',
         name: 'githubUsername',
         message: "What is your Engineer's GitHub username?", 
+        validate: githubUsername => {
+          if (!githubUsername) {
+            console.log('Please enter a valid username');
+            return false;
+          } else {
+            return true;
+          }}
       }
     ])
     .then(({ name, id, email, githubUsername }) => {
