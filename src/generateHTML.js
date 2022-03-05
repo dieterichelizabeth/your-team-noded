@@ -35,7 +35,7 @@ return `
     <!-- Team Titles -->
     <header>
       <h1>${teamName}</h1>
-      <p>~ Teams Dashboard ~</p>
+      <p>~ Team Dashboard ~</p>
     </header>
 
     <!-- Employee Section -->
