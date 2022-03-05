@@ -27,12 +27,20 @@ const generateManager = Manager => {
 
 function generateHTML(teamData) {
 
-  // unpack Team Data
-  const { Manager, Intern, Engineer} = teamData;
+  // get the Team Name
   console.log(teamData);
-  employee1= teamData[0];
-  console.log(employee1);
-  console.log(employee1.name); // - RETURNS SUSAN!!!
+  teamName = teamData[0];
+  console.log(teamName);
+
+  // remove Team Name from array
+  teamData.shift();
+  console.log(teamData);
+
+  // console.log(employee1.name); // - RETURNS SUSAN!!!
+
+
+  // run through each object. Target the role - filer or map?
+  // send different objects to different places?
 
  // console.log(typeof(teamData)); - object
  // console.log(Object.values(teamData));
@@ -46,6 +54,8 @@ function generateHTML(teamData) {
   // get the Team Name
   // const { teamName } = teamData[0];
   // console.log(teamName);
+
+    // ${generateManager(Manager)}  
 return `
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +82,7 @@ return `
 
     <!-- Team Titles -->
     <header>
-      <h1></h1>
+      <h1>${teamName}</h1>
       <p>~ Teams Dashboard ~</p>
     </header>
 
@@ -80,7 +90,6 @@ return `
     <main>
       <div class="teamCards">
 
-      ${generateManager(Manager)}  
 
       </div>
     </main>
