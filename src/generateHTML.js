@@ -1,29 +1,39 @@
 
-const generateManager = Manager => {
-  if (!Manager) {
-      return '';
-  } else {
+const generateEmployee = teamData => {
+  // remove Team Name from array
+  teamData.shift();
+  console.log(teamData);
+
+  // set up the for loop
+  // account for icon changes (manager, intern, engineer in If statements)
+  // account for office#/github/current school differences
+  // create a function to change profile pictures for each employee
+  // 
+
+for(let i=0; i < teamData.length; i++) {
+  
   return `
   <!-- Employee -->
-  <div class="teamCardSpacing">
+  <div id="card" class="teamCardSpacing">
     <div>
-      <p class="cardContent">Susan${name}</p>
+      <p class="cardContent">${teamData[i].name}</p>
     </div>
     <img class="cardIcon" src="./assets/images/profile4.png" alt="" />
     <div>
       <p class="cardContent">
-        <i class="fa-brands fa-connectdevelop ${role}"></i> Manager ${role}
+        <i class="fa-brands fa-connectdevelop"></i> ${teamData[i].role}
       </p>
-      <p class="cardContent">ID: 421 ${id}</p>
+      <p class="cardContent">ID: ${teamData[i].id}</p>
       <p class="cardContent">
-        Email: <a href="mailto:Susan@gmail.com ${email}"> Susan@gmail.com ${email}</a>
+        Email: <a href="mailto:${teamData[i].email}"> ${teamData[i].email}</a>
       </p>
-      <p class="cardContent">Office Number: 421 ${office}</p>
+      <p class="cardContent">Office Number: ${teamData[i].office}</p>
     </div>
   </div>
   `
-      };
-  };
+  }
+  
+};
 
 function generateHTML(teamData) {
 
@@ -31,10 +41,6 @@ function generateHTML(teamData) {
   console.log(teamData);
   teamName = teamData[0];
   console.log(teamName);
-
-  // remove Team Name from array
-  teamData.shift();
-  console.log(teamData);
 
   // console.log(employee1.name); // - RETURNS SUSAN!!!
 
@@ -90,7 +96,7 @@ return `
     <main>
       <div class="teamCards">
 
-
+    ${generateEmployee(teamData)}
       </div>
     </main>
   </body>
