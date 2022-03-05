@@ -1,113 +1,12 @@
-// Generate Manager Card 
-const generateManager = teamData => {
-  // remove Team Name from array
-  teamData.shift();
-  console.log(teamData);
-
-  // random number for profile photo
-  var profile = Math.floor(Math.random() * 6) + 1;
-  
-  return `
-  <!-- Manager -->
-  <div id="card" class="teamCardSpacing">
-    <div>
-      <p class="cardContent">${teamData[0].name}</p>
-    </div>
-    <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
-    <div>
-      <p class="cardContent">
-        <i class="fa-solid fa-mug-hot"></i> ${teamData[0].role}
-      </p>
-      <p class="cardContent">ID: ${teamData[0].id}</p>
-      <p class="cardContent">
-        Email: <a href="mailto:${teamData[0].email}"> ${teamData[0].email}</a>
-      </p>
-      <p class="cardContent">Office Number: ${teamData[0].office}</p>
-    </div>
-  </div>
-  `
-};
-
-// Generate Intern Cards
-const generateIntern = teamData => {
-  // remove Team Name from array
-  teamData.shift();
-  console.log(teamData);
-
-  const interns = teamData.filter(teamData => teamData.role === 'Intern');
-  console.log(interns);
-
-  for(let i=0; i < interns.length; i++) {
-    // random number for profile photo
-  var profile = Math.floor(Math.random() * 6) + 1;
-  return `
-  <!-- Intern -->
-  <div id="card" class="teamCardSpacing">
-    <div>
-      <p class="cardContent">${teamData[i].name}</p>
-    </div>
-    <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
-    <div>
-      <p class="cardContent">
-      <i class="fa-solid fa-graduation-cap"></i> ${teamData[i].role}
-      </p>
-      <p class="cardContent">ID: ${teamData[i].id}</p>
-      <p class="cardContent">
-        Email: <a href="mailto:${teamData[i].email}"> ${teamData[i].email}</a>
-      </p>
-      <p class="cardContent">School: ${teamData[i].school}</p>
-    </div>
-  </div>
-  `
-  }
-}
-
-// Generate Engineer Cards
-const generateEngineer = teamData => {
-  // remove Team Name from array
-  teamData.shift();
-  console.log(teamData);
-
-  const engineers = teamData.filter(teamData => teamData.role === 'Engineer');
-  console.log(engineers);
-
-  for(let i=0; i < engineers.length; i++) {
-    // random number for profile photo
-  var profile = Math.floor(Math.random() * 6) + 1;
-  return `
-  <!-- Engineer -->
-  <div id="card" class="teamCardSpacing">
-    <div>
-      <p class="cardContent">${teamData[i].name}</p>
-    </div>
-    <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
-    <div>
-      <p class="cardContent">
-      <i class="fa-brands fa-connectdevelop"></i> ${teamData[i].role}
-      </p>
-      <p class="cardContent">ID: ${teamData[i].id}</p>
-      <p class="cardContent">
-        Email: <a href="mailto:${teamData[i].email}"> ${teamData[i].email}</a>
-      </p>
-      <p id="employeeInfo" class="cardContent">
-      Github:
-      <a
-        href="https://github.com/${teamData[i].github}"
-        rel="noopener noreferrer"
-        target="_blank"
-        >https://github.com/${teamData[i].github}</a
-      >
-    </p>
-    </div>
-  </div>
-  `
-  }
-}
-
+// Generate the HTML page
 function generateHTML(teamData) {
 
   // get the Team Name
   teamName = teamData[0];
+
+  // remove Team Name from array
+  teamData.shift();
+  console.log(teamData);
 
 return `
 <!DOCTYPE html>
@@ -143,11 +42,97 @@ return `
     <main>
       <div class="teamCards">
 
-    ${generateManager(teamData)}
+      ${teamData
+        .filter(teamData => teamData.role === 'Manager')
+        .map(({ name, id, email, office, role }) => {
+          // random number for profile photo
+          var profile = Math.floor(Math.random() * 6) + 1;
+          
+          return `
+          <!-- Manager -->
+          <div id="card" class="teamCardSpacing">
+            <div>
+              <p class="cardContent">${name}</p>
+            </div>
+            <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
+            <div>
+              <p class="cardContent">
+                <i class="fa-solid fa-mug-hot"></i> ${role}
+              </p>
+              <p class="cardContent">ID: ${id}</p>
+              <p class="cardContent">
+                Email: <a href="mailto:${email}"> ${email}</a>
+              </p>
+              <p class="cardContent">Office Number: ${office}</p>
+            </div>
+          </div>
+        `;
+        })
+        .join('')}
 
-    ${generateIntern(teamData)}
+      ${teamData
+        .filter(teamData => teamData.role === 'Intern')
+        .map(({ name, id, email, school, role }) => {
+          // random number for profile photo
+          var profile = Math.floor(Math.random() * 6) + 1;
+          
+          return `
+          <!-- Intern -->
+          <div id="card" class="teamCardSpacing">
+            <div>
+              <p class="cardContent">${name}</p>
+            </div>
+            <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
+            <div>
+              <p class="cardContent">
+              <i class="fa-solid fa-graduation-cap"></i> ${role}
+              </p>
+              <p class="cardContent">ID: ${id}</p>
+              <p class="cardContent">
+                Email: <a href="mailto:${email}"> ${email}</a>
+              </p>
+              <p class="cardContent">School: ${school}</p>
+            </div>
+          </div>
+        `;
+        })
+        .join('')}
 
-    ${generateEngineer(teamData)}
+      ${teamData
+        .filter(teamData => teamData.role === 'Engineer')
+        .map(({ name, id, email, github, role }) => {
+          // random number for profile photo
+          var profile = Math.floor(Math.random() * 6) + 1;
+            
+          return `
+          <!-- Engineer -->
+          <div id="card" class="teamCardSpacing">
+            <div>
+              <p class="cardContent">${name}</p>
+            </div>
+            <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
+            <div>
+              <p class="cardContent">
+              <i class="fa-brands fa-connectdevelop"></i> ${role}
+              </p>
+              <p class="cardContent">ID: ${id}</p>
+              <p class="cardContent">
+                Email: <a href="mailto:${email}"> ${email}</a>
+              </p>
+              <p id="employeeInfo" class="cardContent">
+              Github:
+              <a
+                href="https://github.com/${github}"
+                rel="noopener noreferrer"
+                target="_blank"
+                >https://github.com/${github}</a
+              >
+            </p>
+            </div>
+          </div>
+        `;
+        })
+        .join('')}
 
       </div>
     </main>
