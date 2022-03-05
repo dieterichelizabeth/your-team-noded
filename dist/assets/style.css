@@ -1,0 +1,96 @@
+body {
+  background-color: #2d2d30;
+}
+
+/* Banner Images */
+#banner {
+  background-image: url(./images/banner.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bannerIcon {
+  margin-top: 180px;
+  height: 200px;
+}
+
+/* Header */
+header {
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+header p {
+  color: #bdbdbd;
+  text-align: center;
+}
+
+/* Begin styles to body */
+p {
+  color: #bdbdbd;
+}
+
+#card {
+  background-color: #1d1d1f;
+  border-radius: 5px;
+}
+
+img {
+  height: 100px;
+}
+
+#employeeName {
+  font-size: 30px;
+}
+
+a {
+  color: #5bb398;
+}
+
+.teamCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.teamCardSpacing {
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.cardContent {
+  width: 100%;
+  text-align: center;
+}
+
+.cardIcon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+/* MEDIA QUERY FOR 980px */
+@media screen and (max-width: 980px) {
+  .teamCardSpacing {
+    width: 40%;
+  }
+}
+
+/* MEDIA QUERY FOR 575px */
+@media screen and (max-width: 575px) {
+  .teamCardSpacing {
+    width: 80%;
+  }
+}

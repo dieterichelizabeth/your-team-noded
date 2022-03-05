@@ -29,7 +29,7 @@ Team.prototype.initializeTeam = function() {
        message: "What is the name of your team?",  
       })
     .then(({ teamName }) => {
-      this.team.push(teamName);
+      // this.team.push(teamName);
 
       this.addManager();
     });

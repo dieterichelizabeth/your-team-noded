@@ -29,10 +29,23 @@ function generateHTML(teamData) {
 
   // unpack Team Data
   const { Manager, Intern, Engineer} = teamData;
+  console.log(teamData);
+  employee1= teamData[0];
+  console.log(employee1);
+  console.log(employee1.name); // - RETURNS SUSAN!!!
+
+ // console.log(typeof(teamData)); - object
+ // console.log(Object.values(teamData));
+
+ // console.log(Object.values(Manager));
+ //console.log(Manager); - undefined
+ // console.log(Intern); - undefined
+ //console.log(Engineer); - undefined
+ //console.log(teamName); - can't access before initialization
 
   // get the Team Name
-  const { teamName } = teamData[0];
-
+  // const { teamName } = teamData[0];
+  // console.log(teamName);
 return `
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +72,7 @@ return `
 
     <!-- Team Titles -->
     <header>
-      <h1>${teamName}</h1>
+      <h1></h1>
       <p>~ Teams Dashboard ~</p>
     </header>
 
@@ -76,4 +89,4 @@ return `
 `;
 };
 
-module.exports = { generateHTML };
+module.exports = generateHTML;
