@@ -6,12 +6,6 @@ Because this application won’t be deployed, you’ll also need to provide a li
 
 Your application should use Jest (Links to an external site.) for running the unit tests and Inquirer (Links to an external site.) for collecting input from the user. The application will be invoked by using the following command:
 
-The application must have these classes: Employee, Manager, Engineer, and Intern. The tests for these classes (in the _tests_ directory) must all pass.
-
-```
-node index.js
-```
-
 ## User Story
 
 ```
