@@ -306,7 +306,7 @@ console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
 `);
   // pass the information to a generate html function
-  console.log(this.team);
+  // console.log(this.team);
   const teamPage = generateHTML(this.team);
   fs.writeFile('./dist/index.html', teamPage, err => {
     if (err) throw new Error(err);

@@ -6,7 +6,7 @@ function generateHTML(teamData) {
 
   // remove Team Name from array
   teamData.shift();
-  console.log(teamData);
+  // console.log(teamData);
 
 return `
 <!DOCTYPE html>
