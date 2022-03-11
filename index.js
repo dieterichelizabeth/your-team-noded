@@ -7,13 +7,12 @@ const Manager = require('./lib/Manager');
 // assigns anonymous HTML template function in page-template.js to the variable generatePage
 const generateHTML = require('./src/generateHTML');
 
-function Team() {
-    this.employee;
-    this.team = [];
+var Team = {
+    team: []
 };
 
 // Start/welcome- enter the team name and move to add Manager
-Team.prototype.initializeTeam = function() {
+Team.initializeTeam = function() {
     console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
   Create a Team Profile by answering the prompts!
@@ -37,14 +36,14 @@ Team.prototype.initializeTeam = function() {
       }
       })
     .then(({ teamName }) => {
-      this.team.push(teamName);
+      Team.team.push(teamName);
 
       this.addManager();
     });
 };
-
+console.log("Hello World", this);
 // Add your manager
-Team.prototype.addManager = function() {
+Team.addManager = function() {
 console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
         -  Next, we'll add your manager -
@@ -108,18 +107,19 @@ console.log(`
     ])
       .then(({ name, id, email, newOffice }) => {
         // create a new Manager class
-        this.employee = new Manager( name, id, email, newOffice );
+        const employee = new Manager( name, id, email, newOffice );
         // push into the team array
-        this.team.push(this.employee);
+        this.team.push(employee);
         // display for the user
-        console.table(this.employee.employeeDisplay());
+        console.table(employee.employeeDisplay());
+        console.log(this);
         this.teamReview();
       }
     );
 };
 
 // Asks the user if they want to add another Employee
-Team.prototype.teamReview = function() {
+Team.teamReview = function() {
 
   inquirer
   .prompt([
@@ -135,7 +135,7 @@ Team.prototype.teamReview = function() {
     console.log(isComplete);
     // if yes for intern, move to addIntern
     if (isComplete === 'Intern'){
-      this.addIntern();
+      addIntern();
     }
     // if yes for engineer, move to addEngineer
     else if (isComplete === 'Engineer'){
@@ -149,7 +149,7 @@ Team.prototype.teamReview = function() {
 };
 
 // Add an Intern
-Team.prototype.addIntern = function() {
+Team.addIntern = function() {
 console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
               ...adding Intern...
@@ -224,7 +224,7 @@ console.log(`
 }
 
 // add an Engineer
-Team.prototype.addEngineer = function() {
+Team.addEngineer = function() {
 console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
               ...adding Engineer...
@@ -293,13 +293,14 @@ console.log(`
       // display for the user
       console.table(this.employee.employeeDisplay());
 
+      console.log(this);
       this.teamReview();
     }
     );
 }
 
 // Team complete function
-Team.prototype.teamDone = function() {
+function teamDone() {
 console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
             ...your team loading...
@@ -318,5 +319,5 @@ console.log(`
   });
 }
 
-new Team().initializeTeam();
+Team.initializeTeam();
 module.exports = Team;
