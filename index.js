@@ -7,12 +7,14 @@ const Manager = require('./lib/Manager');
 // assigns anonymous HTML template function in page-template.js to the variable generatePage
 const generateHTML = require('./src/generateHTML');
 
-var Team = {
-    team: []
-};
+var team = [];
+
+// function initializeTeam() {}
+
+// const initializeTeam = () => {}
 
 // Start/welcome- enter the team name and move to add Manager
-Team.initializeTeam = function() {
+function initializeTeam() {
     console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
   Create a Team Profile by answering the prompts!
@@ -36,14 +38,13 @@ Team.initializeTeam = function() {
       }
       })
     .then(({ teamName }) => {
-      Team.team.push(teamName);
-
-      this.addManager();
+      team.push(teamName);
+      addManager();
     });
 };
-console.log("Hello World", this);
+
 // Add your manager
-Team.addManager = function() {
+function addManager() {
 console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
         -  Next, we'll add your manager -
@@ -109,17 +110,16 @@ console.log(`
         // create a new Manager class
         const employee = new Manager( name, id, email, newOffice );
         // push into the team array
-        this.team.push(employee);
+        team.push(employee);
         // display for the user
         console.table(employee.employeeDisplay());
-        console.log(this);
-        this.teamReview();
+        teamReview();
       }
     );
 };
 
 // Asks the user if they want to add another Employee
-Team.teamReview = function() {
+function teamReview() {
 
   inquirer
   .prompt([
@@ -139,17 +139,17 @@ Team.teamReview = function() {
     }
     // if yes for engineer, move to addEngineer
     else if (isComplete === 'Engineer'){
-      this.addEngineer();
+      addEngineer();
     }
     // if not, the team is complete(done)
     else {
-      this.teamDone();
+      teamDone();
     }
   })
 };
 
 // Add an Intern
-Team.addIntern = function() {
+function addIntern() {
 console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
               ...adding Intern...
@@ -212,19 +212,19 @@ console.log(`
     ])
     .then(({ name, id, email, currentSchool }) => {
       // create a new Intern class
-      this.employee = new Intern( name, id, email, currentSchool );
+      const employee = new Intern( name, id, email, currentSchool );
       // push it into the team array
-      this.team.push(this.employee);
+      team.push(employee);
       // display for the user
-      console.table(this.employee.employeeDisplay());
+      console.table(employee.employeeDisplay());
 
-      this.teamReview();
+      teamReview();
     }
     );
 }
 
 // add an Engineer
-Team.addEngineer = function() {
+function addEngineer() {
 console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
               ...adding Engineer...
@@ -287,14 +287,13 @@ console.log(`
     ])
     .then(({ name, id, email, githubUsername }) => {
       // create a new Engineer class
-      this.employee = new Engineer( name, id, email, githubUsername );
+      const employee = new Engineer( name, id, email, githubUsername );
       // push the Engineer into the team array
-      this.team.push(this.employee);
+      team.push(employee);
       // display for the user
-      console.table(this.employee.employeeDisplay());
+      console.table(employee.employeeDisplay());
 
-      console.log(this);
-      this.teamReview();
+      teamReview();
     }
     );
 }
@@ -307,8 +306,8 @@ console.log(`
 <><><><><><><><><>~~~~~~~~~~~~~~~<><><><><><><><><>
 `);
   // pass the information to a generate html function
-  // console.log(this.team);
-  const teamPage = generateHTML(this.team);
+  console.log(team);
+  const teamPage = generateHTML(team);
   fs.writeFile('./dist/index.html', teamPage, err => {
     if (err) throw new Error(err);
     console.log(`
@@ -319,5 +318,5 @@ console.log(`
   });
 }
 
-Team.initializeTeam();
-module.exports = Team;
+initializeTeam();
+module.exports = team;

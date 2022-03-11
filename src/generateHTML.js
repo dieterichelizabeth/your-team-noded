@@ -3,6 +3,7 @@ function generateHTML(teamData) {
 
   // get the Team Name
   teamName = teamData[0];
+  console.log(teamData);
 
   // remove Team Name from array
   teamData.shift();
@@ -43,8 +44,8 @@ return `
       <div class="teamCards">
 
       ${teamData
-        .filter(teamData => teamData.role === 'Manager')
-        .map(({ name, id, email, office, role }) => {
+        .filter(teamData => teamData.constructor.name === 'Manager')
+        .map(({ name, id, email, office }) => {
           // random number for profile photo
           var profile = Math.floor(Math.random() * 6) + 1;
           
@@ -57,7 +58,7 @@ return `
             <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
             <div>
               <p class="cardContent">
-                <i class="fa-solid fa-mug-hot"></i> ${role}
+                <i class="fa-solid fa-mug-hot"></i> Manager
               </p>
               <p class="cardContent">ID: ${id}</p>
               <p class="cardContent">
@@ -71,7 +72,7 @@ return `
         .join('')}
 
       ${teamData
-        .filter(teamData => teamData.role === 'Intern')
+        .filter(teamData => teamData.constructor.name === 'Intern')
         .map(({ name, id, email, school, role }) => {
           // random number for profile photo
           var profile = Math.floor(Math.random() * 6) + 1;
@@ -85,7 +86,7 @@ return `
             <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
             <div>
               <p class="cardContent">
-              <i class="fa-solid fa-graduation-cap"></i> ${role}
+              <i class="fa-solid fa-graduation-cap"></i> Intern
               </p>
               <p class="cardContent">ID: ${id}</p>
               <p class="cardContent">
@@ -99,7 +100,7 @@ return `
         .join('')}
 
       ${teamData
-        .filter(teamData => teamData.role === 'Engineer')
+        .filter(teamData => teamData.constructor.name === 'Engineer')
         .map(({ name, id, email, github, role }) => {
           // random number for profile photo
           var profile = Math.floor(Math.random() * 6) + 1;
@@ -113,7 +114,7 @@ return `
             <img class="cardIcon" src="./assets/images/profile${profile}.png" alt="" />
             <div>
               <p class="cardContent">
-              <i class="fa-brands fa-connectdevelop"></i> ${role}
+              <i class="fa-brands fa-connectdevelop"></i> Engineer
               </p>
               <p class="cardContent">ID: ${id}</p>
               <p class="cardContent">
