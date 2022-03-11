@@ -36,7 +36,7 @@ node -v
 Clone the repo
 
 ```bash
-git clone https://github.com/dieterichelizabeth/readme-ready-node.git
+git clone https://https://github.com/dieterichelizabeth/your-team-noded.git
 ```
 
 Install npm packages
