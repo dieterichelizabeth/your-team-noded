@@ -1,15 +1,12 @@
 // Generate the HTML page
 function generateHTML(teamData) {
-
   // get the Team Name
   teamName = teamData[0];
-  console.log(teamData);
 
   // remove Team Name from array
   teamData.shift();
-  // console.log(teamData);
 
-return `
+  return `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,11 +41,11 @@ return `
       <div class="teamCards">
 
       ${teamData
-        .filter(teamData => teamData.constructor.name === 'Manager')
+        .filter((teamData) => teamData.constructor.name === "Manager")
         .map(({ name, id, email, office }) => {
           // random number for profile photo
           var profile = Math.floor(Math.random() * 6) + 1;
-          
+
           return `
           <!-- Manager -->
           <div id="card" class="teamCardSpacing">
@@ -69,14 +66,14 @@ return `
           </div>
         `;
         })
-        .join('')}
+        .join("")}
 
       ${teamData
-        .filter(teamData => teamData.constructor.name === 'Intern')
+        .filter((teamData) => teamData.constructor.name === "Intern")
         .map(({ name, id, email, school, role }) => {
           // random number for profile photo
           var profile = Math.floor(Math.random() * 6) + 1;
-          
+
           return `
           <!-- Intern -->
           <div id="card" class="teamCardSpacing">
@@ -97,14 +94,14 @@ return `
           </div>
         `;
         })
-        .join('')}
+        .join("")}
 
       ${teamData
-        .filter(teamData => teamData.constructor.name === 'Engineer')
+        .filter((teamData) => teamData.constructor.name === "Engineer")
         .map(({ name, id, email, github, role }) => {
           // random number for profile photo
           var profile = Math.floor(Math.random() * 6) + 1;
-            
+
           return `
           <!-- Engineer -->
           <div id="card" class="teamCardSpacing">
@@ -133,13 +130,13 @@ return `
           </div>
         `;
         })
-        .join('')}
+        .join("")}
 
       </div>
     </main>
   </body>
 </html>
 `;
-};
+}
 
 module.exports = generateHTML;
